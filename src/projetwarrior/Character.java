@@ -337,4 +337,7 @@ abstract class Character {
     public String toString(){
         return "nom : " + this.getName() + "\nimage: " + this.getImage() + "\nvie : " + this.getLifeLevel() + "\nforce : " + this.getStrengthLevel();
     }
+
+    abstract Offensive createOffensive();
+
 }

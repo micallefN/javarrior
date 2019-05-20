@@ -59,4 +59,8 @@ public class Wizard extends Character {
         return super.toString() + "\nPhiltre : " + this.getPhilter() + spellString;
     }
 
+    public Offensive createOffensive(){
+        Offensive offensive = new Spell();
+        return offensive;
+    }
 }

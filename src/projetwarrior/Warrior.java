@@ -60,4 +60,9 @@ public class Warrior extends Character {
         return super.toString() + "\nBouclier : " + this.getShield() + weaponString;
     }
 
+    public Offensive createOffensive(){
+        Offensive offensive = new Weapon();
+        return offensive;
+    }
+
 }

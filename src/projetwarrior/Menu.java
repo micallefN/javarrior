@@ -37,14 +37,11 @@ public class Menu {
         }
     }
     public void createWeaponSpell(Character player){
-        Offensive offensive;
-        if(player instanceof Warrior){
-            offensive = new Weapon();
-        } else {
-            offensive = new Spell();
-        }
-        offensive.setName(getString("nom ?"));
-        offensive.setAttackLevel(getInt("Puissance ?"));
+        String name = getString("nom ?");
+        int power = getInt("Puissance ?");
+        Offensive offensive = player.createOffensive();
+        offensive.setAttackLevel(power);
+        offensive.setName(name);
         player.setOffensive(offensive);
         player.addOffensive(offensive);
     }
