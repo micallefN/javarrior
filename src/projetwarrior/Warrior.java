@@ -3,26 +3,24 @@ package projetwarrior;
 public class Warrior extends Character {
 
     private String shield;
-    private WeaponSpell weaponSpell;
-    private String attackType;
 
     public Warrior(){
         super();
         this.shield = "pas de bouclier";
-        this.weaponSpell = null;
         this.attackType= "une arme";
+        this.defenseType = "un bouclier";
     }
     public Warrior(String name){
         super(name);
         this.shield = "pas de bouclier";
-        this.weaponSpell = null;
         this.attackType= "une arme";
+        this.defenseType = "un bouclier";
     }
     public Warrior(String name, String image, int lifeLevel, int strengthLevel){
         super(name,image,lifeLevel,strengthLevel);
         this.shield = "pas de bouclier";
-        this.weaponSpell = null;
         this.attackType= "une arme";
+        this.defenseType = "un bouclier";
     }
 
     public String getShield(){
@@ -52,17 +50,10 @@ public class Warrior extends Character {
         }
     }
 
-    public String getAttackType() {
-        return this.attackType;
-    }
-    public void setAttackType(String attackType) {
-        this.attackType = attackType;
-    }
-
     public String toString(){
         String weaponString;
-        if(this.getWeaponSpell() != null){
-            weaponString = "\nArme : " + this.getWeaponSpell().getName();
+        if(this.getOffensive() != null){
+            weaponString = "\nArme : " + this.getOffensive().getName();
         } else {
             weaponString = "\nArme : Pas d'arme";
         }

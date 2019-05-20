@@ -3,26 +3,24 @@ package projetwarrior;
 public class Wizard extends Character {
 
     private String philter;
-    private WeaponSpell weaponSpell;
-    private String attackType;
 
     public Wizard(){
         super();
         this.philter = "pas de philtre";
-        this.weaponSpell = null;
         this.attackType= "un sort";
+        this.defenseType = "un philtre";
     }
     public Wizard(String name){
         super(name);
         this.philter = "pas de philtre";
-        this.weaponSpell = null;
         this.attackType= "un sort";
+        this.defenseType = "un philtre";
     }
     public Wizard(String name, String image, int lifeLevel, int strengthLevel){
         super(name,image,lifeLevel,strengthLevel);
         this.philter = "pas de philtre";
-        this.weaponSpell = null;
         this.attackType= "un sort";
+        this.defenseType = "un philtre";
     }
 
     public String getPhilter(){
@@ -51,17 +49,10 @@ public class Wizard extends Character {
         }
     }
 
-    public String getAttackType() {
-        return this.attackType;
-    }
-    public void setAttackType(String attackType) {
-        this.attackType = attackType;
-    }
-
     public String toString(){
         String spellString;
-        if(this.getWeaponSpell() != null){
-            spellString = "\nSort : " + this.getWeaponSpell().getName();
+        if(this.getOffensive() != null){
+            spellString = "\nSort : " + this.getOffensive().getName();
         } else {
             spellString = "\nSort : Pas de sort";
         }

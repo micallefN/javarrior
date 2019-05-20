@@ -8,9 +8,8 @@ public class Main {
 
         boolean loop = true;
         int integer;
-        String str;
         String name;
-        ArrayList<Character> characters = new ArrayList<Character>();
+        ArrayList<Character> characters = new ArrayList<>();
 
         Menu menu = new Menu();
 
@@ -32,9 +31,9 @@ public class Main {
                 continue;
             }
 
-            characters.add(player);
-
             loop = menu.menuOptions(player);
+
+            characters.add(player);
         }
 
         System.out.println("t'es dehors");
