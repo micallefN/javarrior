@@ -2,7 +2,7 @@ package projetwarrior;
 
 import java.util.Scanner;
 
-public class Menu {
+class Menu {
 
     private static Scanner sc = new Scanner(System.in);
 

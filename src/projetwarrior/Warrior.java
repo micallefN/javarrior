@@ -50,6 +50,7 @@ public class Warrior extends Character {
         }
     }
 
+    @Override
     public String toString(){
         String weaponString;
         if(this.getOffensive() != null){

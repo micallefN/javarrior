@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @see Offensive
  */
-abstract class Character {
+public abstract class Character {
     /**
      * Le nom du personnage
      *
@@ -200,9 +200,7 @@ abstract class Character {
      * @param lifeLevel
      *              La nouvelle vie du perosnnage
      */
-    public void setLifeLevel(int lifeLevel){
-        this.lifeLevel = lifeLevel;
-    }
+    public abstract void setLifeLevel(int lifeLevel);
 
     /**
      * retourne la force du personnage
@@ -338,6 +336,6 @@ abstract class Character {
         return "nom : " + this.getName() + "\nimage: " + this.getImage() + "\nvie : " + this.getLifeLevel() + "\nforce : " + this.getStrengthLevel();
     }
 
-    abstract Offensive createOffensive();
+    public abstract Offensive createOffensive();
 
 }
