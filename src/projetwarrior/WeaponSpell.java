@@ -1,15 +1,15 @@
 package projetwarrior;
 
-public class Spell {
+public class WeaponSpell {
     private String name;
     private int attackLevel;
 
-    public Spell(){
+    public WeaponSpell(){
         this.name = "pas de nom";
         this.attackLevel = 0;
     }
 
-    public Spell(String name, int attackLevel){
+    public WeaponSpell(String name, int attackLevel){
         this.name = name;
         this.attackLevel = attackLevel;
     }

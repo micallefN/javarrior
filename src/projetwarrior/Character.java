@@ -1,16 +1,22 @@
 package projetwarrior;
 
+import java.util.ArrayList;
+
 public class Character {
     protected String name;
     protected String image;
     protected int lifeLevel;
     protected int strengthLevel;
+    protected String attackType;
+    protected WeaponSpell weaponSpell;
+    protected ArrayList<WeaponSpell> weaponSpells = new ArrayList<WeaponSpell>();
 
     public Character(){
         this.name = "no name";
         this.image = "no image";
         this.lifeLevel = 0;
         this.strengthLevel = 0;
+        this.weaponSpell = null;
     }
 
     public Character(String name){
@@ -18,6 +24,7 @@ public class Character {
         this.image = "no image";
         this.lifeLevel = 0;
         this.strengthLevel = 0;
+        this.weaponSpell = null;
     }
 
     public Character(String name, String image, int lifeLevel, int strengthLevel){
@@ -25,6 +32,7 @@ public class Character {
         this.image = image;
         this.lifeLevel = lifeLevel;
         this.strengthLevel = strengthLevel;
+        this.weaponSpell = null;
     }
 
     public String getName(){
@@ -55,10 +63,35 @@ public class Character {
         this.strengthLevel = strengthLevel;
     }
 
-    public void showStats(){
-        System.out.println("nom : " + this.name);
-        System.out.println("image : " + this.image);
-        System.out.println("vie : " + this.lifeLevel);
-        System.out.println("force : " + this.strengthLevel);
+    public String getAttackType() {
+        return this.attackType;
+    }
+    public void setAttackType(String attackType) {
+        this.attackType = attackType;
+    }
+
+    public WeaponSpell getWeaponSpell() {
+        return weaponSpell;
+    }
+
+    public void setWeaponSpell(WeaponSpell weaponSpell) {
+        this.weaponSpell = weaponSpell;
+    }
+
+    public ArrayList<WeaponSpell> getWeaponSpells() {
+        return weaponSpells;
+    }
+    public void setWeaponSpells(ArrayList<WeaponSpell> weaponSpells) {
+        this.weaponSpells = weaponSpells;
+    }
+    public void addWeaponSpell(WeaponSpell weaponSpell){
+        this.weaponSpells.add(weaponSpell);
+    }
+    public void removeWeaponSpell(int index){
+        this.weaponSpells.remove(index);
+    }
+
+    public String toString(){
+        return "nom : " + this.getName() + "\nimage: " + this.getImage() + "\nvie : " + this.getLifeLevel() + "\nforce : " + this.getStrengthLevel();
     }
 }
