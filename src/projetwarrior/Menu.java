@@ -131,11 +131,16 @@ class Menu {
         }
         setPlayerStats(player);
     }
-    public Character createCharacter(){
+    public Character createCharacter() throws checkPdvException{
         int type = getInt("Quel type de personnage voulez-vous? \n1: guerrier \n2: magicien");
         String name= getString("Quel est son nom?");
         String image= getString("Quel est son image?");
         int life = getInt("Combien de points de vie?");
+        if(life < 0){
+            throw new checkPdvException(life);
+        } else {
+            life = 0;
+        }
         int strength = getInt("Combien de point de force?");
 
         Character character;

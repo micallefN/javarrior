@@ -1,10 +1,12 @@
 package projetwarrior;
 
+// import java.util.ArrayList;
+
 import java.util.ArrayList;
 
 public class Main {
 
-    private static ArrayList<Character> characters = new ArrayList<>();
+    //private static ArrayList<Character> characters = new ArrayList<>();
 
     private static Character[] charactersList = new Character[5];
 
@@ -29,8 +31,12 @@ public class Main {
         }
         switch (choice){
             case 1:
-                Character character = menu.createCharacter();
-                addCharacter(character);
+                try{
+                    Character character = menu.createCharacter();
+                    addCharacter(character);
+                } catch (checkPdvException e){
+                    e.getMessage();
+                }
                 startMenu();
                 break;
             case 2:
@@ -46,13 +52,30 @@ public class Main {
                 startMenu();
                 break;
             case 4:
-                System.out.println("Sortie");
+                System.out.println("Sortie Menu");
         }
     }
 
     public static void main(String[] args) {
 
         startMenu();
+
+        Labyrinthe labyrinthe = new Labyrinthe();
+        labyrinthe.printLabyrinthe();
+
+        Character test = new Warrior();
+
+        test.setX(4);
+        test.setY(0);
+
+        while(labyrinthe.getLabyrinthe()[test.getX()][test.getY()].getIsFinale() != 1){
+            labyrinthe.getPath(test);
+            labyrinthe.getPathChoice(test);
+            labyrinthe.move();
+        }
+
+
+        System.out.println("Fin du donjon");
 
     }
 }
