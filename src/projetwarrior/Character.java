@@ -20,6 +20,8 @@ import java.util.ArrayList;
  * @see Offensive
  */
 public abstract class Character {
+
+    protected int id;
     /**
      * Le nom du personnage
      *
@@ -338,4 +340,10 @@ public abstract class Character {
 
     public abstract Offensive createOffensive();
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getId() {
+        return this.id;
+    }
 }

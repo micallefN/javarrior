@@ -18,25 +18,25 @@ class Menu {
         return integer;
     }
 
-    public boolean menuOptions(Character player){
+    public Character[] menuOptions(Character[] charactersList, Character player){
         int value = 0;
 
         while (value < 1 || value >4){
-            value = getInt("Que faire? (1: Voir les caracteristiques, 2: modifier les caracterisitques, 3: créer un nouveau personnage, 4: Arreter)");
+            value = getInt("\nQue faire? \n1: Voir les caracteristiques \n2: modifier les caracterisitques \n3: Supprimer \n4: Retour");
         }
         if(value == 1){
             System.out.println(player); // appel la fonction toString
-            return menuOptions(player);
+            charactersList = menuOptions(charactersList, player);
         } else if(value == 2){
             setPlayerStats(player);
-            return menuOptions(player);
-        } else if(value == 4){
-            return false;
-        } else{
-            return true;
+            charactersList = menuOptions(charactersList, player);
+        } else if(value == 3){
+            charactersList = removeCharacter(charactersList, player);
         }
+
+        return charactersList;
     }
-    public void createWeaponSpell(Character player){
+    public void createOffensive(Character player){
         String name = getString("nom ?");
         int power = getInt("Puissance ?");
         Offensive offensive = player.createOffensive();
@@ -45,7 +45,7 @@ class Menu {
         player.setOffensive(offensive);
         player.addOffensive(offensive);
     }
-    public void equipWeaponSpell(Character player){
+    public void equipOffensive(Character player){
         int value = -1;
         if(!player.getOffensives().isEmpty()){
             while (value < 0 || value > player.getOffensives().size()) {
@@ -60,7 +60,7 @@ class Menu {
             System.out.println("Aucun objet de ce type dans l'inventaire \n");
         }
     }
-    public void deleteWeaponSpell(Character player){
+    public void deleteOffensive(Character player){
         int value = -1;
         if(!player.getOffensives().isEmpty()){
             while (value < 0 || value > player.getOffensives().size()) {
@@ -82,17 +82,17 @@ class Menu {
     public void attackOptions(Character player){
         int value = 0;
         while (value < 1 || value >4) {
-            value = getInt("Que faire? (\n 1: Créer et équiper " + player.getAttackType() + " \n 2: Equiper  " + player.getAttackType() + " \n 3: Supprimer " + player.getAttackType() + " \n 4: retour \n");
+            value = getInt("Que faire? \n 1: Créer et équiper " + player.getAttackType() + " \n 2: Equiper  " + player.getAttackType() + " \n 3: Supprimer " + player.getAttackType() + " \n 4: retour \n");
         }
         switch (value){
             case 1:
-                createWeaponSpell(player);
+                createOffensive(player);
                 break;
             case 2:
-                equipWeaponSpell(player);
+                equipOffensive(player);
                 break;
             case 3:
-                deleteWeaponSpell(player);
+                deleteOffensive(player);
                 break;
             case 4:
                 return ;
@@ -104,7 +104,7 @@ class Menu {
         int value = 0;
 
         while (value < 1 || value >7){
-            value = getInt("Que faire? \n (1: Modifier le nom \n 2: modifier l'image \n 3: modifier la vie \n 4: modifier la force \n 5: modifier " + player.getAttackType() +  " \n 6: modifier " + player.getDefenseType() + " \n 7: retour au menu)");
+            value = getInt("\n Que faire? \n1: Modifier le nom \n 2: modifier l'image \n 3: modifier la vie \n 4: modifier la force \n 5: modifier " + player.getAttackType() +  " \n 6: modifier " + player.getDefenseType() + " \n 7: retour au menu");
         }
         switch (value){
             case 1:
@@ -130,5 +130,45 @@ class Menu {
                 return ;
         }
         setPlayerStats(player);
+    }
+    public Character createCharacter(){
+        int type = getInt("Quel type de personnage voulez-vous? \n1: guerrier \n2: magicien");
+        String name= getString("Quel est son nom?");
+        String image= getString("Quel est son image?");
+        int life = getInt("Combien de points de vie?");
+        int strength = getInt("Combien de point de force?");
+
+        Character character;
+
+        if(type == 1){
+            character = new Warrior(name, image, life, strength);
+            System.out.println("Très bien " + name + " tu es un guerrier!");
+        } else{
+            character = new Wizard(name, image, life, strength);
+            System.out.println("Très bien " + name + " tu es un magicien!");
+        }
+        return character;
+    }
+    public void showCharacters(Character[] charactersList){
+
+        String characterClass;
+
+        for(int i = 0; i < charactersList.length; i++){
+            if(charactersList[i] != null){
+                if(charactersList[i] instanceof Warrior){
+                    characterClass = "Guerrier - ";
+                } else {
+                    characterClass = "Magicien - ";
+                }
+                System.out.println(charactersList[i].getId() + " : " + characterClass + charactersList[i].getName());
+            } else {
+                System.out.println(i + " : slot disponible");
+            }
+        }
+    }
+
+    public Character[] removeCharacter(Character[] charactersList, Character character){
+        charactersList[character.getId()] = null;
+        return charactersList;
     }
 }
