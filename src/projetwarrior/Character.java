@@ -1,5 +1,7 @@
 package projetwarrior;
 
+import projetwarrior.monster.Monster;
+
 import java.util.ArrayList;
 
 /**
@@ -164,8 +166,8 @@ public abstract class Character {
     public Character(String name, String image, int lifeLevel, int strengthLevel){
         this.name = name;
         this.image = image;
-        this.lifeLevel = lifeLevel;
-        this.strengthLevel = strengthLevel;
+        this.setLifeLevel(lifeLevel);
+        this.setStrengthLevel(strengthLevel);
         this.offensive = null;
     }
 
@@ -365,5 +367,15 @@ public abstract class Character {
     }
     public int getId() {
         return this.id;
+    }
+
+    public void attack(Monster monster){
+
+        if(this.getOffensive() != null){
+            monster.setLife(monster.getLife() - (this.getStrengthLevel() + this.getOffensive().getAttackLevel()));
+        } else {
+            monster.setLife(monster.getLife() - this.getStrengthLevel() );
+        }
+
     }
 }

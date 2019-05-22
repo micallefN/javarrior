@@ -18,6 +18,20 @@ public class Warrior extends Character {
     }
     public Warrior(String name, String image, int lifeLevel, int strengthLevel){
         super(name,image,lifeLevel,strengthLevel);
+        if(lifeLevel < 5){
+            this.lifeLevel = 5;
+        } else if(lifeLevel > 10){
+            this.lifeLevel = 10;
+        } else {
+            this.lifeLevel = lifeLevel;
+        }
+        if(strengthLevel < 5){
+            this.strengthLevel = 5;
+        } else if(strengthLevel > 10){
+            this.strengthLevel = 10;
+        } else {
+            this.strengthLevel = strengthLevel;
+        }
         this.shield = "pas de bouclier";
         this.attackType= "une arme";
         this.defenseType = "un bouclier";
@@ -31,23 +45,11 @@ public class Warrior extends Character {
     }
 
     public void setStrengthLevel(int strengthLevel){
-        if(strengthLevel < 5){
-            this.strengthLevel = 5;
-        } else if(strengthLevel > 10){
-            this.strengthLevel = 10;
-        } else {
-            this.strengthLevel = strengthLevel;
-        }
+        this.strengthLevel = strengthLevel;
     }
 
     public void setLifeLevel(int lifeLevel){
-        if(lifeLevel < 5){
-            this.lifeLevel = 5;
-        } else if(lifeLevel > 10){
-            this.lifeLevel = 10;
-        } else {
-            this.lifeLevel = lifeLevel;
-        }
+        this.lifeLevel = lifeLevel;
     }
 
     @Override

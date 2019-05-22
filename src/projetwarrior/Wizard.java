@@ -18,6 +18,20 @@ public class Wizard extends Character {
     }
     public Wizard(String name, String image, int lifeLevel, int strengthLevel){
         super(name,image,lifeLevel,strengthLevel);
+        if(lifeLevel < 3){
+            this.lifeLevel = 3;
+        } else if(lifeLevel > 6){
+            this.lifeLevel = 6;
+        } else {
+            this.lifeLevel = lifeLevel;
+        }
+        if(strengthLevel < 8){
+            this.strengthLevel = 8;
+        } else if(strengthLevel > 15){
+            this.strengthLevel = 15;
+        } else {
+            this.strengthLevel = strengthLevel;
+        }
         this.philter = "pas de philtre";
         this.attackType= "un sort";
         this.defenseType = "un philtre";
@@ -31,22 +45,11 @@ public class Wizard extends Character {
     }
 
     public void setStrengthLevel(int strengthLevel){
-        if(strengthLevel < 8){
-            this.strengthLevel = 8;
-        } else if(strengthLevel > 15){
-            this.strengthLevel = 15;
-        } else {
-            this.strengthLevel = strengthLevel;
-        }
+        this.strengthLevel = strengthLevel;
+
     }
     public void setLifeLevel(int lifeLevel){
-        if(lifeLevel < 3){
-            this.lifeLevel = 3;
-        } else if(lifeLevel > 6){
-            this.lifeLevel = 6;
-        } else {
-            this.lifeLevel = lifeLevel;
-        }
+        this.lifeLevel = lifeLevel;
     }
 
     public String toString(){

@@ -1,12 +1,6 @@
 package projetwarrior;
 
-// import java.util.ArrayList;
-
-import java.util.ArrayList;
-
 public class Main {
-
-    //private static ArrayList<Character> characters = new ArrayList<>();
 
     private static Character[] charactersList = new Character[5];
 
@@ -61,20 +55,28 @@ public class Main {
         startMenu();
 
         Labyrinthe labyrinthe = new Labyrinthe();
-        labyrinthe.printLabyrinthe();
 
-        Character test = new Warrior();
+        Character test = new Warrior("steve", "image", 25, 30);
 
-        test.setX(4);
+        test.setX(5);
         test.setY(0);
 
-        while(labyrinthe.getLabyrinthe()[test.getX()][test.getY()].getIsFinale() != 1){
+        while(labyrinthe.getLabyrinthe()[test.getX()][test.getY()].getIsFinale() != 1 && test.getLifeLevel()>0){
+            labyrinthe.showRoom(test);
+            labyrinthe.printLabyrinthe();
             labyrinthe.getPath(test);
             labyrinthe.getPathChoice(test);
-            labyrinthe.move();
+
+            labyrinthe.checkMonster(test);
         }
 
+        labyrinthe.printLabyrinthe();
 
+        if(test.getLifeLevel()<=0){
+            System.out.printf("t'es mort");
+        } else {
+            System.out.printf("bravo");
+        }
         System.out.println("Fin du donjon");
 
     }
